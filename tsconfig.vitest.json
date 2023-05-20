@@ -4,6 +4,14 @@
   "compilerOptions": {
     "composite": true,
     "lib": [],
-    "types": ["node", "jsdom"]
-  }
+    "types": [
+      "node",
+      "jsdom",
+      "vitest/importMeta",
+      "vitest/globals",
+      "@vitejs/plugin-vue",
+      "./env.d.ts"
+    ]
+  },
+  "include": ["src/**/*.ts", "src/**/*.vue", "test/**/*.ts"]
 }

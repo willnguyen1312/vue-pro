@@ -13,3 +13,14 @@
   }
 }
 </style>
+
+<script lang="ts">
+export default {
+  computed: {
+    username() {
+      // We will see what `params` is shortly
+      return this.$route.params.username
+    }
+  }
+}
+</script>
