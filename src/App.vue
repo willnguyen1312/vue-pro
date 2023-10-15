@@ -1,13 +1,51 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const SIZE = 10
+
+const red = ref(new Set<number>())
+
+function handleClick() {
+  red.value.add(red.value.size + 1)
+}
+
+function checkRed(i: number) {
+  return red.value.has(i)
+}
+</script>
 
 <template>
-  <main class="min-w-screen min-h-screen">
-    <div class="w-full h-30 bg-amber p-4 flex gap-4">
-      <div class="flex flex-1 gap-2">
-        <div class="w-[408px] bg-cyan">1.1</div>
-        <div class="w-[408px] bg-emerald">1.2</div>
-      </div>
-      <div class="w-[408px] bg-fuchsia">2</div>
+  <main class="container">
+    <div
+      v-for="i in SIZE"
+      :key="i"
+      class="rect"
+      :class="{
+        red: checkRed(i)
+      }"
+    >
+      {{ i }}
     </div>
+
+    <button @click="handleClick">Add red</button>
   </main>
 </template>
+
+<style scoped>
+.container {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+}
+
+.rect {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+}
+
+.red {
+  background-color: red;
+}
+</style>
