@@ -3,14 +3,14 @@ import { ref } from 'vue'
 
 const SIZE = 10
 
-const green = ref(new Set<number>())
+const red = ref(new Set<number>())
 
 function handleClick() {
-  green.value.add(green.value.size + 1)
+  red.value.add(red.value.size + 1)
 }
 
-function checkGreen(i: number) {
-  return green.value.has(i)
+function checkRed(i: number) {
+  return red.value.has(i)
 }
 </script>
 
@@ -21,13 +21,13 @@ function checkGreen(i: number) {
       :key="i"
       class="rect"
       :class="{
-        green: checkGreen(i)
+        red: checkRed(i)
       }"
     >
       {{ i }}
     </div>
 
-    <button @click="handleClick">Add blue</button>
+    <button @click="handleClick">Add red</button>
   </main>
 </template>
 
@@ -45,7 +45,7 @@ function checkGreen(i: number) {
   background-color: blue;
 }
 
-.green {
-  background-color: green;
+.red {
+  background-color: red;
 }
 </style>
