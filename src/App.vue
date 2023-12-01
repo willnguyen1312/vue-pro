@@ -27,7 +27,7 @@ function checkRed(i: number) {
       {{ i }}
     </div>
 
-    <button @click="handleClick">Add red</button>
+    <button @click="handleClick">Add red color</button>
   </main>
 </template>
 
