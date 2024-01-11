@@ -16,6 +16,7 @@ function checkRed(i: number) {
 
 <template>
   <main class="container">
+    <!-- IN the dom -->
     <div
       v-for="i in SIZE"
       :key="i"
