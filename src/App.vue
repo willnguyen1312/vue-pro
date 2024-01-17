@@ -28,6 +28,9 @@ function checkRed(i: number) {
       {{ i }}
     </div>
 
+    <label for="num">Num</label>
+    <input id="num" type="number" inputmode="numeric" />
+
     <button @click="handleClick">Add red color</button>
   </main>
 </template>
