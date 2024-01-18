@@ -1,55 +1,29 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const SIZE = 10
-
-const red = ref(new Set<number>())
-
-function handleClick() {
-  red.value.add(red.value.size + 1)
-}
-
-function checkRed(i: number) {
-  return red.value.has(i)
-}
+const open = ref(false)
 </script>
 
 <template>
-  <main class="container">
-    <!-- IN the dom -->
+  <main>
     <div
-      v-for="i in SIZE"
-      :key="i"
-      class="rect"
-      :class="{
-        red: checkRed(i)
-      }"
+      @click="
+        (event) => {
+          console.log(event.target)
+        }
+      "
     >
-      {{ i }}
+      <h1>Click me 🤗</h1>
+      <button @click="open = true">Open Modal</button>
+
+      <Teleport to="body">
+        <div v-if="open" class="modal">
+          <p>Hello from the modal!</p>
+          <button @click="open = false">Close</button>
+        </div>
+      </Teleport>
     </div>
-
-    <label for="num">Num</label>
-    <input id="num" type="number" inputmode="numeric" />
-
-    <button @click="handleClick">Add red color</button>
   </main>
 </template>
 
-<style scoped>
-.container {
-  display: flex;
-  gap: 4px;
-  padding: 4px;
-}
-
-.rect {
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
-  background-color: blue;
-}
-
-.red {
-  background-color: red;
-}
-</style>
+<style scoped></style>
