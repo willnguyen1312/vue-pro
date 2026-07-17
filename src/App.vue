@@ -1,24 +1,43 @@
 <script setup lang="ts">
-const handleClick = (event: MouseEvent) => {
-  console.log('click button')
-
-  event.target?.dispatchEvent(new CustomEvent('click'))
-}
-
-const onFocusOut = (event: FocusEvent) => {
-  // 😱
-  console.log('focus out, related target:', event.relatedTarget)
-}
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
+  <header>
+    <nav>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/about">About</RouterLink>
+      <RouterLink to="/keystroke">Key Stroke</RouterLink>
+    </nav>
+  </header>
+
   <main>
-    <div @focusout="onFocusOut">
-      <button @click="handleClick">Click me</button>
-      <input type="text" placeholder="Oh wow 1" />
-      <input type="text" placeholder="Oh wow 2" />
-    </div>
+    <RouterView />
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+header {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+nav {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1rem;
+}
+
+nav a {
+  color: #475569;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #0f172a;
+}
+
+nav a.router-link-active {
+  color: #16a34a;
+  font-weight: 600;
+}
+</style>
